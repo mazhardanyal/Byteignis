@@ -1,0 +1,598 @@
+
+
+.navbar {
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(12px);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  height: 60px;
+  background: rgba(0, 0, 0, 0.98);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  padding:50px;
+}
+
+/* Logo Styles */
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  position: relative;
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 15px rgba(253, 67, 5, 0.4));
+}
+
+.logo:hover img {
+  transform: rotate(5deg) scale(1.05);
+  filter: drop-shadow(0 0 25px rgba(253, 67, 5, 0.7));
+}
+
+/* Desktop Navigation Menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 5px;
+  border-radius: 60px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(254, 147, 3, 0.2);
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 18px;
+  transition: all 0.3s ease;
+  position: relative;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 50px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(253, 67, 5, 0.2), rgba(254, 147, 3, 0.2));
+  border-radius: 50px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+}
+
+.nav-link:hover {
+  color: rgba(254, 147, 3, 1);
+  transform: translateY(-2px);
+}
+
+/* Active tab indicator */
+.nav-item.active .nav-link {
+  background: linear-gradient(135deg, rgba(253, 67, 5, 0.15), rgba(254, 147, 3, 0.15));
+  color: rgba(254, 147, 3, 1);
+  border: 1px solid rgba(254, 147, 3, 0.3);
+}
+
+/* Button Styles */
+.nav-button {
+  position: relative;
+}
+
+.btn-appointment {
+  background: linear-gradient(135deg, rgba(253, 67, 5, 1) 0%, rgba(254, 147, 3, 1) 100%);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(253, 67, 5, 0.3);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.btn-appointment::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-appointment:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-appointment:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(253, 67, 5, 0.5);
+}
+
+.btn-appointment:active {
+  transform: translateY(1px);
+}
+
+.btn-appointment::after {
+  content: '→';
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.btn-appointment:hover::after {
+  transform: translateX(5px);
+}
+
+/* Mobile Menu Icon */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(254, 147, 3, 0.2);
+}
+
+.menu-icon:hover {
+  background: rgba(253, 67, 5, 0.1);
+  border-color: rgba(253, 67, 5, 0.5);
+}
+
+.hamburger {
+  width: 20px;
+  height: 14px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(253, 67, 5, 1), rgba(254, 147, 3, 1));
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 6px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 12px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 6px;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 6px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: -100%;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background: rgba(0, 0, 0, 0.98);
+  backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+  z-index: 998;
+  padding: 30px 20px;
+  overflow-y: auto;
+}
+
+.mobile-menu.active {
+  left: 0;
+}
+
+.mobile-nav-menu {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.mobile-nav-item {
+  margin: 15px 0;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.active .mobile-nav-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-menu.active .mobile-nav-item:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.active .mobile-nav-item:nth-child(2) { transition-delay: 0.2s; }
+.mobile-menu.active .mobile-nav-item:nth-child(3) { transition-delay: 0.3s; }
+.mobile-menu.active .mobile-nav-item:nth-child(4) { transition-delay: 0.4s; }
+.mobile-menu.active .mobile-nav-item:nth-child(5) { transition-delay: 0.5s; }
+
+.mobile-nav-item a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  position: relative;
+  width: 100%;
+}
+
+.mobile-nav-item a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(253, 67, 5, 1), rgba(254, 147, 3, 1));
+  transition: width 0.3s ease;
+}
+
+.mobile-nav-item a:hover::before {
+  width: 100%;
+}
+
+.mobile-nav-item a:hover {
+  color: rgba(254, 147, 3, 1);
+  padding-left: 10px;
+}
+
+.mobile-button {
+  text-align: center;
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease 0.6s;
+}
+
+.mobile-menu.active .mobile-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-appointment-mobile {
+  background: linear-gradient(135deg, rgba(253, 67, 5, 1) 0%, rgba(254, 147, 3, 1) 100%);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-appointment-mobile::after {
+  content: '→';
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.btn-appointment-mobile:hover::after {
+  transform: translateX(5px);
+}
+
+.btn-appointment-mobile:active {
+  transform: scale(0.98);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(253, 67, 5, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(253, 67, 5, 0.8);
+  }
+}
+
+.nav-item:hover .nav-link {
+  animation: glow 0.5s ease infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(253, 67, 5, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(253, 67, 5, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(253, 67, 5, 0);
+  }
+}
+
+.btn-appointment {
+  animation: pulse 2s infinite;
+}
+
+.btn-appointment:hover {
+  animation: none;
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Tablet Landscape (1024px - 1200px) */
+@media screen and (max-width: 1200px) {
+  .nav-link {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  
+  .btn-appointment {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+}
+
+/* Tablet Portrait (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+  .nav-menu {
+    display: none;
+  }
+  
+  .nav-button {
+    display: none;
+  }
+  
+  .menu-icon {
+    display: flex;
+  }
+  
+  .nav-container {
+    padding: 0 20px;
+  }
+  
+  .logo img {
+    height: 36px;
+  }
+  
+  .navbar {
+    height: 65px;
+  }
+  
+  .navbar.scrolled {
+    height: 55px;
+  }
+  
+  .mobile-menu {
+    top: 65px;
+    height: calc(100vh - 65px);
+  }
+}
+
+/* Mobile Large (426px - 767px) */
+@media screen and (max-width: 767px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+  
+  .logo img {
+    height: 32px;
+  }
+  
+  .navbar {
+    height: 60px;
+  }
+  
+  .navbar.scrolled {
+    height: 55px;
+  }
+  
+  .mobile-menu {
+    top: 60px;
+    height: calc(100vh - 60px);
+    padding: 20px 16px;
+  }
+  
+  .mobile-nav-item a {
+    font-size: 16px;
+    padding: 10px 0;
+  }
+  
+  .mobile-nav-item {
+    margin: 12px 0;
+  }
+  
+  .btn-appointment-mobile {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+  
+  .menu-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .hamburger {
+    width: 18px;
+    height: 12px;
+  }
+  
+  .hamburger span:nth-child(2) {
+    top: 5px;
+  }
+  
+  .hamburger span:nth-child(3) {
+    top: 10px;
+  }
+}
+
+/* Mobile Small (320px - 425px) */
+@media screen and (max-width: 425px) {
+  .nav-container {
+    padding: 0 12px;
+  }
+  
+  .logo img {
+    height: 28px;
+  }
+  
+  .navbar {
+    height: 55px;
+  }
+  
+  .mobile-menu {
+    top: 55px;
+    height: calc(100vh - 55px);
+  }
+  
+  .mobile-nav-item a {
+    font-size: 15px;
+    padding: 8px 0;
+  }
+  
+  .mobile-nav-item {
+    margin: 10px 0;
+  }
+  
+  .mobile-button {
+    margin-top: 20px;
+  }
+  
+  .btn-appointment-mobile {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .menu-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Fix for very small devices */
+@media screen and (max-width: 320px) {
+  .logo img {
+    height: 24px;
+  }
+  
+  .mobile-nav-item a {
+    font-size: 14px;
+  }
+}
+
+/* Landscape mode fix for mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .mobile-menu {
+    overflow-y: auto;
+    padding: 15px 20px;
+  }
+  
+  .mobile-nav-item {
+    margin: 8px 0;
+  }
+  
+  .mobile-nav-item a {
+    padding: 6px 0;
+    font-size: 14px;
+  }
+  
+  .mobile-button {
+    margin-top: 15px;
+  }
+  
+  .btn-appointment-mobile {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
