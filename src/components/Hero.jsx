@@ -5,7 +5,6 @@ const Hero = () => {
   const [currentWord, setCurrentWord] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
   
  const words = [
   { text: "Ships Fast", effect: "shake" },
@@ -13,6 +12,7 @@ const Hero = () => {
   { text: "Stays Stable", effect: "shake" },
   { text: "Runs At Scale", effect: "wave" }
 ];
+
   // Typing animation
   useEffect(() => {
     const word = words[currentWord].text;
@@ -28,11 +28,9 @@ const Hero = () => {
         if (displayText.length === 0) {
           setIsDeleting(false);
           setCurrentWord((prev) => (prev + 1) % words.length);
-          setIsAnimating(true);
-          setTimeout(() => setIsAnimating(false), 500);
         }
       }
-    }, 80);
+    }, 100);
     
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, currentWord]);
@@ -47,11 +45,13 @@ const Hero = () => {
         
         <h1 className="hero-title">
           Build Software That
-          <span 
-            className={`gradient-text ${words[currentWord].effect} ${isAnimating ? 'effect-trigger' : ''}`}
-            data-text={displayText}
-          >
-            {displayText}
+          <span className="gradient-text-wrapper">
+            <span 
+              className={`gradient-text ${words[currentWord].effect}`}
+              data-text={displayText}
+            >
+              {displayText}
+            </span>
             <span className="cursor-type">|</span>
           </span>
         </h1>
@@ -68,12 +68,11 @@ const Hero = () => {
               <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="2"/>
             </svg>
           </button>
-        
         </div>
         
         <div className="hero-stats">
           <div className="stat-item">
-            <div className="stat-number">3+</div>
+            <div className="stat-number">150+</div>
             <div className="stat-label">projects shipped</div>
           </div>
           <div className="stat-item">
