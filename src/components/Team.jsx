@@ -1,5 +1,6 @@
 import React from 'react';
 import Fouder from "../assets/Fouder.jpeg";
+import CTO from "../assets/CTO.PNG"; 
 import { useState, useEffect } from "react";
 import { 
   FaGithub, 
@@ -21,8 +22,8 @@ const team = [
     id: 1,
     name: "Mazhar Danyal",
     role: "Founder & CEO",
-    expertise: "MERN Stack",
-    bio: "2+ years in tech. Passionate about building scalable web applications and leading innovative teams.",
+    expertise: "MERN Stack Expert",
+    bio: "2+ years in tech. Passionate about building scalable web applications and leading innovative teams. Focused on delivering excellence.",
     image: Fouder,   
     icon: FaBrain,
     color: "#fd4305",
@@ -31,16 +32,16 @@ const team = [
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com"
     },
-    achievements: ["Tech Founder", "MERN Expert", "Team Leader"],
+    achievements: ["🏆 Tech Founder", "🚀 MERN Expert", "💡 Team Leader"],
     skills: ["React", "Node.js", "MongoDB", "Express"]
   },
   {
     id: 2,
     name: "Wahid Ali",
     role: "Co-Founder & CTO",
-    expertise: "Full Stack Development",
-    bio: "Experienced full-stack developer focused on building robust backend systems and scalable architectures.",
-    image: "https://randomuser.me/api/portraits/men/45.jpg",
+    expertise: "Full Stack Architect",
+    bio: "Experienced full-stack developer focused on building robust backend systems and scalable architectures. Loves solving complex problems.",
+    image: CTO,
     icon: FaCode,
     color: "#fe9303",
     social: {
@@ -48,15 +49,15 @@ const team = [
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com"
     },
-    achievements: ["Backend Expert", "System Architect", "Tech Lead"],
+    achievements: ["⚙️ Backend Expert", "🏗️ System Architect", "👨‍💻 Tech Lead"],
     skills: ["Python", "Django", "PostgreSQL", "Redis"]
   },
   {
     id: 3,
     name: "Marcus Williams",
     role: "Lead Developer",
-    expertise: "Backend & Cloud",
-    bio: "Cloud architect specializing in scalable systems. Built infrastructure for 50M+ users.",
+    expertise: "Cloud Architecture",
+    bio: "Cloud architect specializing in scalable systems. Built infrastructure for 50M+ users with zero downtime.",
     image: "https://randomuser.me/api/portraits/men/75.jpg",
     icon: FaServer,
     color: "#fd4305",
@@ -65,7 +66,7 @@ const team = [
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com"
     },
-    achievements: ["AWS Certified", "Kubernetes Expert", "Cloud Architect"],
+    achievements: ["☁️ AWS Certified", "🐳 Kubernetes Expert", "🔧 Cloud Architect"],
     skills: ["AWS", "Docker", "K8s", "Terraform"]
   },
   {
@@ -73,7 +74,7 @@ const team = [
     name: "Elena Rodriguez",
     role: "Mobile Expert",
     expertise: "iOS & Android",
-    bio: "Built 50+ mobile apps used by millions. React Native and Flutter specialist.",
+    bio: "Built 50+ mobile apps used by millions. React Native and Flutter specialist with passion for clean UI.",
     image: "https://randomuser.me/api/portraits/women/68.jpg",
     icon: FaMobileAlt,
     color: "#fe9303",
@@ -82,14 +83,14 @@ const team = [
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com"
     },
-    achievements: ["App Store Featured", "Google Play Award", "Mobile Expert"],
+    achievements: ["📱 App Store Featured", "🏆 Google Play Award", "📲 Mobile Expert"],
     skills: ["React Native", "Flutter", "Swift", "Kotlin"]
   },
   {
     id: 5,
     name: "David Park",
     role: "AI Specialist",
-    expertise: "Machine Learning & AI",
+    expertise: "Machine Learning",
     bio: "ML expert with PhD from Stanford. Built AI solutions for Fortune 500 companies.",
     image: "https://randomuser.me/api/portraits/men/91.jpg",
     icon: FaBrain,
@@ -99,7 +100,7 @@ const team = [
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com"
     },
-    achievements: ["AI Researcher", "Patent Holder", "ML Speaker"],
+    achievements: ["🤖 AI Researcher", "📜 Patent Holder", "🎤 ML Speaker"],
     skills: ["TensorFlow", "PyTorch", "OpenCV", "NLP"]
   },
   {
@@ -107,7 +108,7 @@ const team = [
     name: "Lisa Wong",
     role: "Frontend Architect",
     expertise: "UI Development",
-    bio: "Creates lightning-fast, pixel-perfect interfaces. Performance obsessed.",
+    bio: "Creates lightning-fast, pixel-perfect interfaces. Performance obsessed with eye for detail.",
     image: "https://randomuser.me/api/portraits/women/89.jpg",
     icon: FaCode,
     color: "#fe9303",
@@ -116,7 +117,7 @@ const team = [
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com"
     },
-    achievements: ["React Expert", "Performance Specialist", "UI Architect"],
+    achievements: ["⚛️ React Expert", "🚀 Performance Specialist", "🎨 UI Architect"],
     skills: ["React", "Vue", "Next.js", "Tailwind"]
   }
 ];
@@ -133,17 +134,6 @@ const Team = () => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-
-  // Auto-rotate only on desktop
-  useEffect(() => {
-    if (isMobile) return;
-    
-    const interval = setInterval(() => {
-      setActiveMember((prev) => (prev + 1) % team.length);
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, [isMobile]);
 
   const handleCardClick = (index) => {
     setActiveMember(index);
@@ -203,7 +193,6 @@ const Team = () => {
               <div className="profile-achievements">
                 {currentMember?.achievements.map((achievement, i) => (
                   <div key={i} className="achievement-badge">
-                    <span>🏆</span>
                     <span>{achievement}</span>
                   </div>
                 ))}

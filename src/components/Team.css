@@ -1,10 +1,10 @@
-/* TEAM SECTION - PRO VERSION */
+/* TEAM SECTION - IMPROVED IMAGE UI */
 .team {
   min-height: 100vh;
-  /* background: #000000; */
   position: relative;
   overflow: hidden;
   padding: 100px 0;
+  background: #000000;
 }
 
 /* Animated Background */
@@ -153,7 +153,7 @@
   margin-bottom: 80px;
 }
 
-/* Left - Profile (Enhanced) */
+/* Left - Profile */
 .team-profile {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
   border: 1px solid rgba(254, 147, 3, 0.15);
@@ -168,17 +168,6 @@
   transform: translateY(-8px);
   border-color: rgba(254, 147, 3, 0.4);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .profile-glow {
@@ -198,6 +187,7 @@
   opacity: 0.2;
 }
 
+/* Improved Image Container */
 .profile-image-wrapper {
   position: relative;
   display: inline-block;
@@ -206,12 +196,13 @@
 
 .profile-image {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(135deg, #fd4305, #fe9303);
-  padding: 3px;
+  padding: 4px;
+  transition: all 0.3s ease;
 }
 
 .profile-image img {
@@ -219,6 +210,11 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+.team-profile:hover .profile-image img {
+  transform: scale(1.05);
 }
 
 .image-ring {
@@ -245,10 +241,10 @@
 
 .profile-badge {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
-  width: 45px;
-  height: 45px;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -257,7 +253,8 @@
   font-weight: bold;
   font-size: 20px;
   background: linear-gradient(135deg, #fd4305, #fe9303);
-  border: 2px solid #000;
+  border: 3px solid #000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .profile-info {
@@ -306,9 +303,9 @@
   align-items: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.05);
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 100px;
-  font-size: 12px;
+  font-size: 13px;
   color: #fe9303;
   transition: all 0.3s ease;
   border: 1px solid rgba(254, 147, 3, 0.2);
@@ -384,7 +381,7 @@
   box-shadow: 0 10px 25px rgba(253, 67, 5, 0.4);
 }
 
-/* Right Side - Team Grid (Enhanced) */
+/* Right Side - Team Grid */
 .team-grid {
   display: flex;
   align-items: center;
@@ -396,8 +393,8 @@
   gap: 25px;
   width: 100%;
 }
-/* Update the team-card section - remove card-hover */
 
+/* Team Cards */
 .team-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
   border: 1px solid rgba(254, 147, 3, 0.1);
@@ -440,15 +437,21 @@
   z-index: 2;
 }
 
+/* Card Avatar - Improved */
 .card-avatar {
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   background: linear-gradient(135deg, #fd4305, #fe9303);
   padding: 2px;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .card-avatar {
+  transform: scale(1.05);
 }
 
 .card-avatar img {
@@ -502,8 +505,7 @@
   transform: scale(1.1) rotate(5deg);
 }
 
-/* Remove the card-hover section completely */
-/* Team Stats (Enhanced) */
+/* Team Stats */
 .team-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -563,7 +565,7 @@
   font-weight: 500;
 }
 
-/* CTA Section (Enhanced) */
+/* CTA Section */
 .team-cta {
   background: linear-gradient(135deg, rgba(253, 67, 5, 0.12), rgba(254, 147, 3, 0.06));
   border: 1px solid rgba(254, 147, 3, 0.2);
@@ -692,8 +694,8 @@
   }
   
   .profile-image {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
   }
   
   .grid-container {
@@ -746,14 +748,16 @@
   }
   
   .profile-image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
   
   .profile-badge {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     font-size: 16px;
+    bottom: 5px;
+    right: 5px;
   }
   
   .profile-achievements {
@@ -806,8 +810,8 @@
   }
   
   .profile-image {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
   
   .profile-name {
@@ -817,11 +821,6 @@
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */

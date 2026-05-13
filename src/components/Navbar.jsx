@@ -64,8 +64,7 @@ const Navbar = () => {
             </a>
           </li>
           <li className={`nav-item ${activeTab === 'contact' ? 'active' : ''}`}>
-            <a href="/contact" className="nav-link" onClick={() => handleTabClick('contact')}>
-              <span></span> Contact
+            <a href="/contact" className="nav-link" onClick={() => handleTabClick('contact')}>  <span></span> Contact
             </a>
           </li>
         </ul>
@@ -111,7 +110,7 @@ const Navbar = () => {
             </a>
           </li>
           <li className="mobile-nav-item">
-            <a href="/contact" onClick={() => handleTabClick('contact')}>
+            <a href="/contact" onClick={() => handleTabClick('contactus')}>
               <span></span> Contact
             </a>
           </li>
